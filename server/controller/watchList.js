@@ -1,8 +1,8 @@
-let fakeToDoList = [
-    { task: "One Piece", completed: true },
-    { task: "Naruto", completed: false },
-    { task: "Ouran High School", completed: false },
-];
+// let fakeToDoList = [
+//     { task: "One Piece", completed: true },
+//     { task: "Naruto", completed: false },
+//     { task: "Ouran High School", completed: false },
+// ];
 
 let watchListDB = require("../models/watchList");
 
@@ -44,13 +44,14 @@ const updateWatchList = (req, res) => {
             if (!foundTask) {
                 return res.status(201).json({ message: "Task Not Found" });
             }
-
             foundTask.completed = !foundTask.completed;
             
             // Save the updated task
             return foundTask.save();
-            res.status(200).json({ message: "Task Updated" });
         })
+        .then(updatedTask =>
+            res.status(200).json({ message: "Task Updated" })
+        )
         .catch(err => {
             console.error("Error toggling completed status:", err);
             res.status(500).json({ error: "Internal Server Error" });

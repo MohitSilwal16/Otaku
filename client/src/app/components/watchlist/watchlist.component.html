@@ -1,0 +1,45 @@
+<div
+  class="w-screen h-screen bg-gradient-to-b from-blue-300 to-blue-400 flex justify-center items-center font-semibold text-xl"
+>
+  <div>
+    <div class="bg-slate-200 h-60 w-96 p-5 rounded-xl shadow-xl">
+      <h1 class="font-bold flex justify-center mb-6 text-3xl">Watch List</h1>
+      <label for="task" class="ml-12">Anime:</label>
+      <input
+        class="w-40 ml-4 pl-2 rounded-lg h-8"
+        type="text"
+        name="task"
+        placeholder="Anime"
+        autofocus
+        (keydown.enter)="addTask()"
+        [(ngModel)]="task"
+      />
+      <button
+        class="bg-blue-500 hover:bg-blue-400 text-white mt-8 ml-24 rounded-xl py-2 px-5 cursor-pointer"
+        (click)="addTask()"
+      >
+        Add Anime
+      </button>
+    </div>
+    <div
+      *ngIf="taskList.length > 0"
+      class="flex justify-center mt-8 font-semibold text-3xl text-white mb-2"
+    >
+      Watch List
+    </div>
+    <ol *ngFor="let t of taskList" class="mt-2 text-white">
+      <li
+        class="bg-blue-500 hover:bg-blue-400 p-3 rounded-lg cursor-pointer flex justify-between"
+        (click)="toggleTask(t.task)"
+        (dblclick)="removeTask(t.task)"
+      >
+        {{ t.task }}
+        <input
+          class="cursor-pointer"
+          type="checkbox"
+          [checked]="t.completed"
+        />
+      </li>
+    </ol>
+  </div>
+</div>

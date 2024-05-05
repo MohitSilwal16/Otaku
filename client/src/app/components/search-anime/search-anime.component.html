@@ -1,0 +1,57 @@
+<div
+  class="h-screen bg-slate-50 text-xl overflow-x-hidden scroll-smooth scrollbar"
+  id="scroll-bar"
+>
+  <!-- <nav
+    class="h-20 font-bold text-3xl text-white bg-blue-500 flex justify-center items-center mt-20"
+  >
+    Search Anime
+  </nav> -->
+  <main class="mt-32 p-10">
+    <div class="flex justify-center">
+      <div class="relative">
+        <label class="font-bold text-3xl" for="genre">Genre</label><br />
+        <input
+          class="border border-black w-80 mt-1 h-10 pl-10 mb-10 rounded-lg focus:w-96 transition-all transition duration-500"
+          list="genre"
+          name="genre"
+          [placeholder]="'Enter Genre'"      
+          (input)="filterAnimeListByGenre(inp.value)"
+          autofocus
+          #inp
+          (keydown.enter)="inp.blur()"
+        />
+        <img
+          class="h-6 absolute top-12 left-2"
+          src="../assets/images/search.png"
+          alt=""
+        />
+      </div>
+      <datalist id="genre" name="genre">
+        <option class="bg-blue-100" *ngFor="let g of genres" [value]="g">
+          {{ g }}
+        </option>
+      </datalist>
+    </div>
+
+    <div *ngFor="let a of animeList" class="flex justify-center gap-10">
+      <div
+        class="m-2 bg-blue-100 flex w-1/2 overflow-hidden rounded-lg cursor-pointer"
+      >
+        <img class="w-48 h-48" [src]="a.image" />
+        <div class="pl-10 pt-6 pr-4">
+          <span class="font-bold">Title:</span>
+          {{ a.title }} <br />
+          <span class="font-bold">Rating:</span> {{ a.rating }}<br />
+          <span class="font-bold">Episodes: </span>
+          {{ a.episodes }}
+          <br />
+          <span class="line-clamp-2">
+            <strong class="font-bold">Description</strong>:
+            {{ a.description }}</span
+          >
+        </div>
+      </div>
+    </div>
+  </main>
+</div>

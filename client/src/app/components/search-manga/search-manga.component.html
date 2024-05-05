@@ -1,0 +1,33 @@
+<div class="w-screen h-screen bg-cover bg-fixed flex justify-center manga-bg">
+  <div
+    class="flex flex-col h-min w-full max-w-4xl bg-white border-2 border-slate-100 px-4 pt-2 pb-3 mb-7 mt-36 relative"
+  >
+    <p class="text-lg font-semibold">Manga Recommender</p>
+    <div class="flex justify-center items-center mb-4">
+      <select
+        #mangaGenre
+        (change)="filterMangaListByGenre(mangaGenre.value)"
+        name="genre"
+        class="ml-2 rounded-lg border-2 border-black px-2 py-1"
+      >
+        <option value="" disabled selected>Select A Genre</option>
+        <option *ngFor="let g of genres" [value]="g">{{ g }}</option>
+      </select>
+    </div>
+    <div
+      class="grid grid-cols-1 gap-4 overflow-y-auto"
+      style="max-height: 70vh"
+    >
+      <ng-container *ngFor="let m of mangaList">
+        <div class="bg-sky-200 flex items-center">
+          <img [src]="m.img" class="w-1/5 h-auto object-contain" />
+          <div class="flex flex-col ml-4">
+            <p class="font-semibold">Title: {{ m.mangaName }}</p>
+            <p>Rating: {{ m.rating }}</p>
+            <p class="line-clamp-2">Desc: {{ m.desc }}</p>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</div>

@@ -1,9 +1,9 @@
 To run this project for first time:
-  cd server
-  npm install // Install node_modules or dependencies for node js
-  cd ../client
-  npm install // Install node_modules or dependencies for angular
+cd server
+npm install // Install node_modules or dependencies for node js
+cd ../client
+npm install // Install node_modules or dependencies for angular
 
 To start server:
-  node . // Start Node Serve
-  ng serve // Start Angular Server
+node . // Start Node Server
+ng serve // Start Angular Server
